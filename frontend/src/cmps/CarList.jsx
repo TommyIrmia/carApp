@@ -9,7 +9,7 @@ export function CarList({ cars, onRemoveCar }) {
 
 
     function isOwnedByUser(car) {
-        return loggedinUser.isAdmin || loggedinUser?._id === car?.owner._id
+        return loggedinUser?.isAdmin || loggedinUser?._id === car?.owner._id
     }
     
     return (

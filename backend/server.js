@@ -44,6 +44,7 @@ app.get('/nono', (req, res) => {
     res.redirect('/puki')
 })
 
+// fallback route
 app.get('/**', (req, res) => {
     res.sendFile(path.resolve('public/index.html'))
 })
@@ -52,5 +53,5 @@ import { loggerService } from './services/logger.service.js'
 
 const PORT = process.env.PORT || 3030
 app.listen(PORT, () => {
-    loggerService.info('Up and running on port 3030')
+    loggerService.info('Up and running on port ' + PORT)
 })

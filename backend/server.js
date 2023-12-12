@@ -1,10 +1,10 @@
 import express from 'express'
 import cors from 'cors'
+import path from 'path'
 import cookieParser from 'cookie-parser'
 
 
 const app = express()
-const port = 3030
 
 const corsOptions = {
     origin: ['http://127.0.0.1:5173', 'http://localhost:5173'],
@@ -27,40 +27,6 @@ app.use('/api/car', carRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 
-
-app.post('/api/auth/login', (req, res) => {
-    const credentials = req.body
-    userService.checkLogin(credentials)
-        .then(user => {
-            if (user) {
-                const loginToken = userService.getLoginToken(user)
-                res.cookie('loginToken', loginToken)
-                res.send(user)
-            } else {
-                res.status(401).send('Invalid Credentials')
-            }
-        })
-})
-
-app.post('/api/auth/signup', (req, res) => {
-    const credentials = req.body
-    userService.save(credentials)
-        .then(user => {
-            if (user) {
-                const loginToken = userService.getLoginToken(user)
-                res.cookie('loginToken', loginToken)
-                res.send(user)
-            } else {
-                res.status(400).send('Cannot signup')
-            }
-        })
-})
-
-app.post('/api/auth/logout', (req, res) => {
-    res.clearCookie('loginToken')
-    res.send('logged-out!')
-})
-
 // Some example routes
 
 app.get('/', (req, res) => {
@@ -78,7 +44,13 @@ app.get('/nono', (req, res) => {
     res.redirect('/puki')
 })
 
+app.get('/**', (req, res) => {
+    res.sendFile(path.resolve('public/index.html'))
+})
+
 import { loggerService } from './services/logger.service.js'
-app.listen(port, () => {
+
+const PORT = process.env.PORT || 3030
+app.listen(PORT, () => {
     loggerService.info('Up and running on port 3030')
 })

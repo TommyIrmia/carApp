@@ -7,7 +7,7 @@ const router = express.Router()
 
 
 router.get('/', log, getCars)
-router.get('/:carId', getCar)
+router.get('/:carId', log, getCar)
 router.delete('/:carId', requireAuth, removeCar)
 router.post('/', requireAuth, addCar)
 router.put('/', requireAuth, updateCar)

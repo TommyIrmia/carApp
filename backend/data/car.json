@@ -1,0 +1,39 @@
+[
+  {
+    "vendor": "Puki Car",
+    "speed": 220,
+    "_id": "WepLV",
+    "owner": {
+      "_id": "u101",
+      "fullname": "Puki Ja"
+    }
+  },
+  {
+    "vendor": "Muki Car",
+    "speed": 123,
+    "_id": "wYrey",
+    "owner": {
+      "_id": "u102",
+      "fullname": "Muki Ba"
+    }
+  },
+  {
+    "vendor": "audu",
+    "speed": 555,
+    "_id": "omFk9",
+    "owner": {
+      "_id": "9lVZI",
+      "fullname": "Muki Ba"
+    }
+  },
+  {
+    "vendor": "audu",
+    "speed": 555,
+    "_id": "QYa4q",
+    "owner": {
+      "_id": "9lVZI",
+      "fullname": "Muki Ba"
+    },
+    "createdAt": 1702371920860
+  }
+]
